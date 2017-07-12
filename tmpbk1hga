@@ -1,0 +1,15 @@
+
+import rope.base.project
+from rope.base import libutils
+
+myproject = rope.base.project.Project(
+    'C:/Users/SparerD/Documents/Repositories/playing-with-python')
+#myproject.validate('C:/Users/SparerD/Documents/Repositories/playing-with-python/pyqt.py')
+myproject.validate()
+ropy = libutils.path_to_resource(myproject, 'C:/Users/SparerD/Documents/Repositories/playing-with-python/pyqt.py')
+
+from rope.refactor.inline import create_inline
+changes = create_inline(myproject, ropy, 490).get_changes()
+myproject.do(changes)
+
+myproject.close()
